@@ -136,17 +136,23 @@ function edd_social_discounts_share_box( $id = '', $title = '', $message = '', $
 	// else if we're on a single download page
 	elseif ( is_singular( 'download' ) ) {
 		$twitter_default_text = the_title_attribute( 'echo=0' );
-	//	$twitter_default_text = get_the_title( $id );
-	}
-	// default twitter message that is shown when shared. 
-	// if an ID was passed
-	elseif ( $id ) {
+		//	$twitter_default_text = get_the_title( $id );
+	} else if ( $id ) {
+		// default twitter message that is shown when shared.
+		// if an ID was passed
 		$twitter_default_text = get_the_title( $id );
-	}
-	
-	else {
+	} else {
 		$twitter_default_text = '';
 	}
+
+	/**
+	 * Filter the suggested Twitter message
+	 *
+	 * @since 2.1
+	 *
+	 * @param string $twitter_default_text Suggested tweet text.
+	 */
+	$twitter_default_text = apply_filters( 'edd_social_discounts_suggested_tweet', $twitter_default_text );
 
 	// URL to share
 	$share_url = apply_filters( 'edd_social_discounts_share_url', post_permalink( $id ) );
