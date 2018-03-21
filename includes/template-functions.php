@@ -155,7 +155,7 @@ function edd_social_discounts_share_box( $id = '', $title = '', $message = '', $
 	$twitter_default_text = apply_filters( 'edd_social_discounts_suggested_tweet', $twitter_default_text );
 
 	// URL to share
-	$share_url = apply_filters( 'edd_social_discounts_share_url', post_permalink( $id ) );
+	$share_url = apply_filters( 'edd_social_discounts_share_url', get_permalink( $id ) );
 
 	// get services
 	$services = edd_get_option( 'edd_sd_services', '' );
@@ -188,7 +188,7 @@ function edd_social_discounts_share_box( $id = '', $title = '', $message = '', $
 			$twitter_button_size = edd_get_option( 'edd_sd_twitter_button_size', 'medium' );
 		?>
 		<div class="edd-sd-service twitter">
-			<a href="https://twitter.com/share" data-lang="<?php echo $locale; ?>" class="twitter-share-button" data-id="<?php echo 'hello';?>" data-count="<?php echo $twitter_count_box; ?>" data-size="<?php echo $twitter_button_size; ?>" data-counturl="<?php echo post_permalink( $id ); ?>" data-url="<?php echo $share_url; ?>" data-text="<?php echo $twitter_default_text; ?>" data-via="<?php echo $twitter_username; ?>" data-related=""><?php _e( 'Share', 'edd-social-discounts' ); ?></a>
+			<a href="https://twitter.com/share" data-lang="<?php echo $locale; ?>" class="twitter-share-button" data-id="<?php echo 'hello';?>" data-count="<?php echo $twitter_count_box; ?>" data-size="<?php echo $twitter_button_size; ?>" data-counturl="<?php echo get_permalink( $id ); ?>" data-url="<?php echo $share_url; ?>" data-text="<?php echo $twitter_default_text; ?>" data-via="<?php echo $twitter_username; ?>" data-related=""><?php _e( 'Share', 'edd-social-discounts' ); ?></a>
 		</div>
 		<?php endif; ?>
 
